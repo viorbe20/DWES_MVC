@@ -21,11 +21,24 @@ class DefaultController extends BaseController
             $data = $word->getByName($word);
         } else if (isset($_POST["add"])) {
             //Redirecciona a otra página
-            header("location: /repasoJunio/ra3" . DIRBASEURL . "/wordsearch/add");
+            header("location:" . DIRBASEURL . "/wordsearch/add");
         } else {
             //Por defecto. Muestra todas las palabras de la base de datos
             $data = $word->get();
             $this->renderHTML("../view/index_view.php", $data);
         }
+    }
+
+    //Página para añadir una palabra a la base de datos
+    //Introducida la palabra te redirige a la página inicial
+    public function addAction()
+    {
+        $data = array();
+        $word = Word::getInstancia();
+
+        if (isset($_POST["addNewWord"]) || isset($_POST["home"]) ) {
+            $data = $word->set($word);
+            header("location: /repasoJunio/ra3" . DIRBASEURL . "/wordsearch");
+        } 
     }
 }

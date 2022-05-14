@@ -86,7 +86,15 @@ class word extends DBAbstractModel
         return $this->rows;
     }
 
-
+    public function delete($user_data = array())
+    {
+        foreach ($user_data as $campo => $valor) {
+            $$campo = $valor;
+        }
+        $this->query = "DELETE FROM words WHERE id=:id";
+        $this->parametros['id'] = $id;
+        $this->get_results_from_query();
+    }
 
     public function edit($user_data = array())
     {
@@ -97,7 +105,6 @@ class word extends DBAbstractModel
         $this->parametros['word'] = $word;
         $this->parametros['id'] = $id;
         $this->get_results_from_query();
-        echo $this->mensaje = 'Palabra actualizada correctamente.<br>';
     }
 
 

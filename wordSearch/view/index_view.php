@@ -13,15 +13,24 @@
 
 <body>
 <h1>Ejercicio Sopa de Letras (MVC)</h1>
+
+<form action="" method="post">
 <input type="text" nama="input_word" id="input_word" placeholder="Introduce una palabra">
-<button type="submit" name="search">Buscar</button>
-<button type="submit" name="add">Añadir</button><br><br>
+<input type="submit" name="search" value="Buscar">
+<input type="submit" name="add" value="Añadir"><br><br>
+</form>
+
 <h2>Capitales</h2>
+
 <?php
 //Muestra los registros de la bd
 
 foreach ($data as $value) {
     echo($value["word"]);
+    ?>
+    <a href="" name="edit">Editar</a>
+    <a href="" name="delete">Borrar</a>
+    <?php
     echo('<br>') ;
 }
 ?>
