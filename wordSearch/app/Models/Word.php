@@ -28,12 +28,12 @@ class word extends DBAbstractModel
     {
         $this->word = $word;
     }
-    
+
     public function setId($id)
     {
         $this->id = $id;
     }
-    
+
     public function getId()
     {
         return $this->id;
@@ -50,7 +50,6 @@ class word extends DBAbstractModel
         $this->get_results_from_query();
         //$lastId = $this->lastInsert();
         //echo $lastId;
-        echo $this->mensaje = 'Palabra agregada correctamente.<br>';
     }
 
     public function get($user_data = array())
@@ -62,27 +61,27 @@ class word extends DBAbstractModel
         $this->get_results_from_query();
         $resultado = $this->rows;
         return $resultado;
-
     }
 
     /**
      * Busca una palabra dada
      */
-    public function getByName($filtro='') {
-        if($filtro != '') {
+    public function getByName($filtro = '')
+    {
+        if ($filtro != '') {
             $palabra = "%" . $filtro . "%";
             $this->query = "SELECT * FROM words WHERE (word LIKE :word)";
             // Cargamos los parámetros
-            $this->parametros['word']=$palabra;
+            $this->parametros['word'] = $palabra;
 
             // Ejecutamos consulta que devuelve registros
             $this->get_results_from_query();
         }
         if (count($this->rows) == 1) {
-            foreach ($this->rows[0] as $propiedad=>$valor) {
+            foreach ($this->rows[0] as $propiedad => $valor) {
                 $this->$propiedad = $valor;
             }
-        } 
+        }
         return $this->rows;
     }
 
@@ -108,8 +107,16 @@ class word extends DBAbstractModel
     }
 
 
-    public function setEntity(){}
-    public function getEntity($id){}
-    public function deleteEntity($id){}
-    public function editEntity(){}
+    public function setEntity()
+    {
+    }
+    public function getEntity($id)
+    {
+    }
+    public function deleteEntity($id)
+    {
+    }
+    public function editEntity()
+    {
+    }
 }

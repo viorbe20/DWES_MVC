@@ -37,8 +37,11 @@ class DefaultController extends BaseController
         $word = Word::getInstancia();
 
         if (isset($_POST["addNewWord"]) || isset($_POST["home"]) ) {
-            $data = $word->set($word);
-            header("location: /repasoJunio/ra3" . DIRBASEURL . "/wordsearch");
-        } 
+            $data["word"] = $_POST["inputNewWord"];
+            $word->set($data);
+            header("location:" . DIRBASEURL . "/wordsearch");
+        } else {
+            $this->renderHTML("../view/index_add_view.php"); 
+        }
     }
 }
