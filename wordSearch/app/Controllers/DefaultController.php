@@ -86,7 +86,9 @@ class DefaultController extends BaseController
             );
             $word->delete($data);
             header("location:" .   DIRBASEURL . "/wordsearch");
-        } else {
+        } else if (isset($_POST["home"])) {
+            header("location:" . DIRBASEURL . "/wordsearch");
+        }else {
             //Cargo la db en esta página
             $data = $word->get();
             $this->renderHTML("../view/index_delete_view.php", $data);

@@ -9,7 +9,10 @@
     <link rel='stylesheet' type='text/css' href='css/style.css' />
     <title>Edita la capital</title>
 </head>
-
+<?php
+    $css = file_get_contents("../view/css/style_view.css");
+    echo "<style>$css</style>";
+?>
 <body>
     <h2>Edita la capital</h2>
     <?php
@@ -24,10 +27,10 @@
 
     ?>
     <form action="" method="post">
-        <input type="submit" name="home" value="Volver"><br><br>
         <input type="text" name="inputEditedWord" value=<?php echo $selectedWord?>>
         <input type="submit" name="addEditedWord" value="Modificar">
-        <input type="hidden" name="id" value=<?php echo $id?>> 
+        <input type="hidden" name="id" value=<?php echo $id?>> <br><br>
+        <input type="submit" name="home" value="Volver">
     </form>
 </body>
 
