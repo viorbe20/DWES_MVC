@@ -60,7 +60,11 @@ class DefaultController extends BaseController
         $word = Word::getInstancia();
 
         if (isset($_POST["addEditedWord"]) || isset($_POST["home"])) {
-            $data["word"] = $_POST["inputEditedWord"];
+            //$data["word"] = $_POST["inputEditedWord"];
+            $data = array (
+                "word" => $_POST["inputEditedWord"],
+                "id" => $_POST["id"]
+            );
             $word->edit($data);
             header("location:" . DIRBASEURL . "/wordsearch");
         } else {
@@ -68,12 +72,6 @@ class DefaultController extends BaseController
             $data = $word->get();
             $this->renderHTML("../view/index_edit_view.php", $data);
         }
-
-        // $editCap = array(
-        //     "word" => "Londres",
-        //     "id" => 2
-        // );
-
     }
 
     //Página para eliminar una palabra de la base de datos

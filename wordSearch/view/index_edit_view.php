@@ -27,6 +27,7 @@
         <input type="submit" name="home" value="Volver"><br><br>
         <input type="text" name="inputEditedWord" value=<?php echo $selectedWord?>>
         <input type="submit" name="addEditedWord" value="Modificar">
+        <input type="hidden" name="id" value=<?php echo $id?>> 
     </form>
 </body>
 
