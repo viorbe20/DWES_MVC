@@ -17,8 +17,9 @@ class DefaultController extends BaseController
         $data = array();
         $word = Word::getInstancia();
 
-        if (isset($_POST["search"])) {
-            $data = $word->getByName($word);
+        if (isset($_POST["search"]) && (!empty($_POST["inputWord"]))) {
+            $data = $word->getByName($_POST["inputWord"]);
+            $this->renderHTML("../view/index_view.php", $data);
         } else if (isset($_POST["add"])) {
             //Redirecciona a otra página
             header("location:" . DIRBASEURL . "/wordsearch/add");
@@ -26,9 +27,7 @@ class DefaultController extends BaseController
             //Redirecciona a otra página
             header("location:" . DIRBASEURL . "/wordsearch/edit/");
         } else if (isset($_POST["delete"])) {
-            //Borra la palabra seleccionada
-            $data = $word->get();
-            $this->renderHTML("../view/index_view.php", $data);
+            header("location:" . DIRBASEURL . "/wordsearch/delete/");
         } else {
             //Por defecto. Muestra todas las palabras de la base de datos
             $data = $word->get();
@@ -42,10 +41,12 @@ class DefaultController extends BaseController
     {
         $data = array();
         $word = Word::getInstancia();
-
+        //Para que no guarde si el input está vacío
         if (isset($_POST["addNewWord"]) || isset($_POST["home"])) {
-            $data["word"] = $_POST["inputNewWord"];
-            $word->set($data);
+            if (!empty($_POST["inputNewWord"])) {
+                $data["word"] = $_POST["inputNewWord"];
+                $word->set($data);
+            }
             header("location:" . DIRBASEURL . "/wordsearch");
         } else {
             $this->renderHTML("../view/index_add_view.php");
@@ -60,7 +61,6 @@ class DefaultController extends BaseController
         $word = Word::getInstancia();
 
         if (isset($_POST["addEditedWord"]) || isset($_POST["home"])) {
-            //$data["word"] = $_POST["inputEditedWord"];
             $data = array (
                 "word" => $_POST["inputEditedWord"],
                 "id" => $_POST["id"]
@@ -80,12 +80,16 @@ class DefaultController extends BaseController
         $data = array();
         $word = Word::getInstancia();
 
-        if (isset($_POST["addEditedWord"]) || isset($_POST["home"])) {
-            $data["word"] = $_POST["inputEditedWord"];
-            $word->edit($data);
-            header("location:" . DIRBASEURL . "/wordsearch");
+        if (isset($_POST["deleteWord"])) {
+            $data = array (
+                "id" => $_POST["id"]
+            );
+            $word->delete($data);
+            header("location:" .   DIRBASEURL . "/wordsearch");
         } else {
-            $this->renderHTML("../view/index_edit_view.php");
+            //Cargo la db en esta página
+            $data = $word->get();
+            $this->renderHTML("../view/index_delete_view.php", $data);
         }
     }
 }

@@ -14,7 +14,7 @@
 <h1>Ejercicio Sopa de Letras (MVC)</h1>
 
 <form action="" method="post">
-<input type="text" nama="input_word" id="input_word" placeholder="Introduce una palabra">
+<input type="text" name="inputWord" id="inputWord" placeholder="Introduce una palabra">
 <input type="submit" name="search" value="Buscar">
 <input type="submit" name="add" value="Añadir"><br><br>
 </form>
@@ -28,9 +28,7 @@ foreach ($data as $value) {
     echo $value["word"] . " <a href='/repasoJunio/ra3/db/wordSearch/public/index.php/wordsearch/delete/" . $value["id"] . "'>Del</a> <a href='/repasoJunio/ra3/db/wordSearch/public/index.php/wordsearch/edit/" . $value["id"] . "'>Edit</a> </br>";
     echo('<br>') ;
 }
-
 ?>
-
 
 </body>
 </html>
