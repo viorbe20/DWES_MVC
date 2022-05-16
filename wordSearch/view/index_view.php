@@ -25,14 +25,12 @@
 
 //Muestra los registros de la bd
 foreach ($data as $value) {
-    echo($value["word"]);
-    ?>
-    <a href="" name="edit">Editar</a>
-    <a href="" name="delete">Borrar</a>
-    <?php
+    echo $value["word"] . " <a href='/repasoJunio/ra3/db/wordSearch/public/index.php/wordsearch/delete/" . $value["id"] . "'>Del</a> <a href='/repasoJunio/ra3/db/wordSearch/public/index.php/wordsearch/edit/" . $value["id"] . "'>Edit</a> </br>";
     echo('<br>') ;
 }
+
 ?>
+
 
 </body>
 </html>

@@ -13,6 +13,10 @@ if ($route[1] == "/wordsearch") {
     //ruta: http://localhost/repasoJunio/ra3/db/wordSearch/public/index.php/wordsearch
 } else if ($route[1] == "/wordsearch/add") {
     $controller->addAction();
+} else if (explode("/", $route[1])[1] == "wordsearch" && explode("/", $route[1])[2] == "edit" && preg_match("/\d{1,}/", explode("/", $route[1])[3]) == 1) {
+    $controller->editAction(explode("/", $route[1])[3]);
+} else if (explode("/", $route[1])[1] == "wordsearch" && explode("/", $route[1])[2] == "delete" && preg_match("/\d{1,}/", explode("/", $route[1])[3]) == 1) {
+    $controller->deleteAction(explode("/", $route[1])[3]);
 } else {
     echo "No route";
 }
