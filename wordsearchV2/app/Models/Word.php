@@ -87,8 +87,8 @@ class Word extends DBAbstractModel
         $this->query = "SELECT id, word FROM words";
         $this->get_results_from_query();
         $result = $this->rows;
-        //Muestra los 5 primeros registros
-        $last = array_slice($result, 0, 5);
+        //Muestra los 4 primeros registros
+        $last = array_slice($result, 0, 4);
         return $last;
     }
 

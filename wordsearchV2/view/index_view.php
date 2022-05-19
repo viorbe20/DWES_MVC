@@ -9,33 +9,41 @@
     <title>Ejercicio Sopa de Letras</title>
 </head>
 <?php
-    $css = file_get_contents("../view/css/style_index_view.css");
-    echo "<style>$css</style>";
+include("require/view_header.html");
+$css = file_get_contents("../view/css/style_view.css");
+echo "<style>$css</style>";
 ?>
+
 <body>
 
-    <h1>Ejercicio Sopa de Letras (MVC)</h1>
+    <main>
 
-    <form action="" method="post">
-        <input type="text" name="inputWord" id="inputWord" placeholder="Introduce una palabra">
-        <input type="submit" name="search" value="Buscar">
-        <input type="submit" name="add" value="Añadir"><br><br>
-    </form>
+        <h2>Introduce una nueva palabra</h2>
 
-    <h2>Capitales</h2>
+        <form action="" method="post">
+            <input type="text" name="inputWord" id="inputWord" placeholder="Introduce una palabra">
+            <input type="submit" name="search" value="Buscar">
+            <input type="submit" name="add" value="Añadir"><br><br>
+        </form>
 
-    <?php
-    //Muestra los registros de la bd
-    echo "<div id='container'>";
-    foreach ($data as $value) {
-        echo "<div class='capital'>";
-        echo $value["word"] . " <a href='/repasoJunio/ra3/db/wordSearch/public/index.php/wordsearch/delete/" . $value["id"] . "'>Eliminar</a> <a href='/repasoJunio/ra3/db/wordSearch/public/index.php/wordsearch/edit/" . $value["id"] . "'>Editar</a> </br>";
+        <h3>Cuatro primeras capitales</h3>
+
+        <?php
+        //Muestra los registros de la bd
+        echo "<div id='container'>";
+        foreach ($data as $value) {
+            echo "<div class='capital'>";
+            echo "<p class='name'>" . $value["word"] . " </p><a href='/repasoJunio/ra3/db/wordSearch/public/index.php/wordsearch/delete/" . $value["id"] . "'>Eliminar</a> <a href='/repasoJunio/ra3/db/wordSearch/public/index.php/wordsearch/edit/" . $value["id"] . "'>Editar</a> </br>";
+            echo "</div>";
+            echo ('<br>');
+        }
         echo "</div>";
-        echo ('<br>');
-    }
-    echo "</div>";
-    ?>
-
+        ?>
+    </main>
 </body>
+
+<?php
+include("require/view_footer.html");
+?>
 
 </html>
