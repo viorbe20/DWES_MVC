@@ -52,6 +52,7 @@ class word extends DBAbstractModel
         //echo $lastId;
     }
 
+    //MOstrar primeras cinco
     public function get($user_data = array())
     {
         foreach ($user_data as $campo => $valor) {

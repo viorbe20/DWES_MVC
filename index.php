@@ -1,6 +1,6 @@
 <?php
 $ejercicios = array (
-    array ('id'=>1, 'titulo'=>'Sopa de Letras MVC', 'descripcion'=>'Muestra 5 capitales almacenadas en una sopa de letras.', 'enlace'=>'wordSearch/public/index.php', 'github'=>'https://github.com/viorbe20/DWES_MVC/blob/main/wordSearch/public/index.php'),
+    array ('id'=>1, 'titulo'=>'Sopa de Letras MVC', 'descripcion'=>'Muestra 5 capitales almacenadas en una sopa de letras.', 'enlace'=>'wordSearch/public/index.php/wordsearch', 'github'=>'https://github.com/viorbe20/DWES_MVC/blob/main/wordSearch/public/index.php/wordsearch'),
 )
 ?>
 
