@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Core;
 
 class Router
@@ -14,16 +15,14 @@ class Router
     public function matchs(string $request)
     {
 
-    $matches=array();
-    foreach ($this->routes as $route) {
-        $patron=$route['path'];
-        if (preg_match($patron, $request)){
-            $matches = $route;
+        $matches = array();
+        foreach ($this->routes as $route) {
+            $patron = $route['path'];
+            if (preg_match($patron, $request)) {
+                $matches = $route;
+            }
         }
 
+        return $matches;
     }
- 
-    return $matches;
-    }
-
 }

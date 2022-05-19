@@ -21,9 +21,9 @@ echo "<style>$css</style>";
         <h2>Introduce una nueva palabra</h2>
 
         <form action="" method="post">
-            <input type="text" name="inputWord" id="inputWord" placeholder="Introduce una palabra">
-            <input type="submit" name="search" value="Buscar">
-            <input type="submit" name="add" value="Añadir"><br><br>
+            <input class = "myInput" type="text" name="inputWord" id="inputWord" placeholder="Busca una capital">
+            <input class = "myButton" type="submit" name="search" value="Buscar">
+            <input class = "myButton" type="submit" name="add" value="Añadir"><br><br>
         </form>
 
         <h3>Cuatro primeras capitales</h3>

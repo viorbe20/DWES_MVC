@@ -25,13 +25,13 @@ class Word extends DBAbstractModel
     /*FIN DE LA CONSTRUCCIÓN DEL MODELO SINGLETON*/
 
     private $id;
-    private $name;
+    private $word;
 
     //Entity functions
     public function setEntity()
     {
         $this->query = "INSERT INTO words(word)
-                             VALUES(:word)";
+        VALUES(:word)";
         $this->parametros['word'] = $this->word;
         $this->get_results_from_query();
         //Devuelve el ID de la última fila insertada, o el último valor de una secuencia de objetos
@@ -97,7 +97,7 @@ class Word extends DBAbstractModel
         $word = "%" . $word . "%";
 
         $this->query = "SELECT word, id FROM words WHERE word LIKE :word";
-        $this->parametros['word'] = $word;
+        $this->parameters['word'] = $word;
         $this->get_results_from_query();
         return $this->rows;
     }

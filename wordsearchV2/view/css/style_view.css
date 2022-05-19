@@ -90,4 +90,26 @@ footer {
   bottom: 0px;
   right: 0px;
   left: 0px;
+}
+
+.myInput {
+  height: 35px;
+  width: 300px;
+}
+
+.myButton {
+  background-color: #1f535c;
+  color: white;
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-color: white;
+}
+.myButton:hover {
+  background: linear-gradient(#cdcdcd, white);
+  color: #1f535c;
 }/*# sourceMappingURL=style_view.css.map */

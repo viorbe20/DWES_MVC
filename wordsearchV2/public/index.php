@@ -2,6 +2,7 @@
 require "../vendor/autoload.php";
 require "../app/Config/constantes.php";
 use App\Controllers\DefaultController;
+use App\Controllers\WordController;
 use App\Core\Router;
 
 $router = new Router();
@@ -11,6 +12,13 @@ $router->add(array(
     'name'=>'index',
     'path'=>'/wordsearch/',
     'action'=>[DefaultController::class, 'indexAction']
+));
+
+//Enrutamiento a página para añadir palabra
+$router->add(array(
+    'name'=>'addWord',
+    'path'=>'/wordsearch\/add/',
+    'action'=>[WordController::class, 'addWordAction']
 ));
 
 //Petición y respuesta
