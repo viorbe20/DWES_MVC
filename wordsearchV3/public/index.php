@@ -4,7 +4,7 @@ require "../app/Config/constantes.php";
 use App\Controllers\DefaultController;
 use App\Controllers\WordController;
 use App\Controllers\TestController;
-use App\Controllers\LoginController;
+use App\Controllers\UserController;
 use App\Core\Router;
 
 $router = new Router();
@@ -27,7 +27,7 @@ $router->add(array(
 $router->add(array(
     'name'=>'login',
     'path'=>'/wordsearch\/login/',
-    'action'=>[LoginController::class, 'loginAction']
+    'action'=>[UserController::class, 'loginAction']
 ));
 
 //Enrutamiento a página para añadir palabra

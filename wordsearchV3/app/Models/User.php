@@ -22,31 +22,58 @@ class User extends DBAbstractModel
         trigger_error('La clonación no es permitida!.', E_USER_ERROR);
     }
 
+    private $id;
     private $user;
     private $password;
 
-    public function setUsername($user)
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function setUser($user)
     {
         $this->user = $user;
     }
 
-    public function setUserPsw($password)
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function sePassword($password)
     {
         $this->password = $password;
     }
 
+
     public function getByName($filtro = '')
     {
         if ($filtro != '') {
-            $user = '%' . $filtro . '%';
-            $this->query = 'SELECT * FROM users WHERE (user LIKE :user)';
-            if (count($this->rows) == 1) {
-                foreach ($this->rows[0] as $propiedad => $valor) {
-                    $this->propiedad = $valor;
-                }
-            }
-            return $this->rows;
+            $user = "%" . $filtro . "%";
+            $this->query = "SELECT * FROM users WHERE (user LIKE :user)";
+            // Cargamos los parámetros
+            $this->parametros['user'] = $user;
+
+            // Ejecutamos consulta que devuelve registros
+            $this->get_results_from_query();
         }
+        if (count($this->rows) == 1) {
+            foreach ($this->rows[0] as $propiedad => $valor) {
+                $this->$propiedad = $valor;
+            }
+        }
+        return $this->rows;
     }
 
 
