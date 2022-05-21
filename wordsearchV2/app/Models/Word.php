@@ -56,8 +56,6 @@ class Word extends DBAbstractModel
         VALUES(:word)";
         $this->parametros['word'] = $this->word;
         $this->get_results_from_query();
-        //Devuelve el ID de la última fila insertada, o el último valor de una secuencia de objetos
-        //$this->id = $this->lastInsert();
     }
 
     public function getEntity($id)
@@ -78,21 +76,28 @@ class Word extends DBAbstractModel
 
     public function deleteEntity($id)
     {
-        $this->query = "DELETE FROM words
-            WHERE id = :id";
+        $this->query = "DELETE FROM words WHERE id=:id";
         $this->parameters['id'] = $id;
         $this->get_results_from_query();
     }
 
     //Otros métodos
-
-    public function getByName($name)
+    public function getByName($filtro = '')
     {
-        $name = "%" . $name . "%";
+        if ($filtro != '') {
+            $word = "%" . $filtro . "%";
+            $this->query = "SELECT * FROM words WHERE (word LIKE :word)";
+            // Cargamos los parámetros
+            $this->parametros['word'] = $word;
 
-        $this->query = "SELECT name, id FROM words WHERE name LIKE :name";
-        $this->parameters['name'] = $name;
-        $this->get_results_from_query();
+            // Ejecutamos consulta que devuelve registros
+            $this->get_results_from_query();
+        }
+        if (count($this->rows) == 1) {
+            foreach ($this->rows[0] as $propiedad => $valor) {
+                $this->$propiedad = $valor;
+            }
+        }
         return $this->rows;
     }
 
@@ -115,7 +120,7 @@ class Word extends DBAbstractModel
     public function edit()
     {
     }
-    public function delete($user_data = array())
+    public function delete($id)
     {
     }
 }

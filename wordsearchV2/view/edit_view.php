@@ -21,7 +21,8 @@ echo "<style>$css</style>";
         <h2>Edita una palabra</h2>
         <form method="post">
             <!--urldecode():Decodes any %## encoding in the given string. Plus symbols ('+') are decoded to a space character.-->
-            <input class = "myInput" type="text" name="editedWord" value="<?php echo urldecode($data[0]); ?>">
+            <!--current() - returns the value of the current element in an array. $data[0] in this case-->
+            <input class = "myInput" type="text" name="editedWord" value="<?php echo urldecode(current($data)); ?>">
             <input class = "myButton" type="submit" value="Editar" name="editWord">
 
         </form>

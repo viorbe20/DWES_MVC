@@ -9,9 +9,9 @@ require_once('..\app\Config\constantes.php');
 class TestController extends BaseController
 {
     //Test
-    public function testAction()
+    public function testAction($request)
     {
-        $data = array();
+        $data = $request;
         $word = Word::getInstancia();
 
         if (isset($_POST['addNewWord'])) {

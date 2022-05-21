@@ -18,11 +18,12 @@ echo "<style>$css</style>";
 
     <main>
 
-        <h2>Añade una nueva palabra.</h2>
+        <h2>Elimina una palabra.</h2>
         <form method="post">
-
-            <input class = "myInput" type="text" name="newWord" placeholder="Introduce una capital">
-            <input class = "myButton" type="submit" value="Añadir" name="submit">
+            <!--urldecode():Decodes any %## encoding in the given string. Plus symbols ('+') are decoded to a space character.-->
+            <!--prev() - moves the internal pointer to, and outputs, the previous element in the array-->
+            <input readonly class="myInput" type="text" name="selectedWord" value="¿Deseas eliminar <?php echo urldecode(current($data)); ?> ?">
+            <input class="myButton" type="submit" name="delete" value="Eliminar" >
 
         </form>
 
