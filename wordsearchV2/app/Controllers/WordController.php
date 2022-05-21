@@ -10,8 +10,51 @@ class WordController extends BaseController
 {
 
     //Muestra la página para añadir palabras
-    public function addWordAction()
+    public function addWordAction($request)
     {
+        $word = Word::getInstancia();
+
+        if (isset($_POST['addNewWord'])) {
+            //Establecemos las propiedades del objeto
+            $word->setWord($_POST['newWord']);
+            $word->setEntity();
+            header('location:' . DIRBASEURL . '/wordsearch');
+        }  else {
+            $this->renderHTML('..\view\add_view.php');
+        }
+    }
+
+    //Muestra la página para editar palabras
+    public function editWordAction($request)
+    {
+        // $id = explode('/', $request)[3];
+        // $selectedWord = explode('/', $request)[4];
+        // $data = array($selectedWord);
+
+        $elements = explode("/", $request);
+        $selectedWord = end($elements);
+        $data = array($selectedWord);
+        $id = explode('/', $request)[3];
+
+        if (isset($_POST['editWord'])) {
+            $word = Word::getInstancia();
+            $word->setName($_POST['editedWord']);
+            $word->setId($id);
+            $word->editEntity();
+            header('location: ' . DIRBASEURL . '/wordsearch');
+        } else {
+            $this->renderHTML('..\view\edit_view.php', $data);
+        }
+    }
+
+    //Muestra la página para eliminar palabras
+    public function deleteWordAction()
+    {
+        // $elemento = explode("/", $request);
+        // $id = end($elemento);
+        // $sh = new Superheroe();
+        // $sh->deleteEntity($id);
+        // header('location: ' . DIRBASEURL. '/');
         $data = array();
 
         if (isset($_POST['submit'])) {
@@ -21,10 +64,9 @@ class WordController extends BaseController
             //$sh->setId($sh->lastInsert());
             header('location: ' . DIRBASEURL . '/wordsearch');
         } else {
-            $this->renderHTML('..\view\add_view.php', $data);
+            $this->renderHTML('..\view\delete_view.php', $data);
         }
     }
-
 }
 
 ?>

@@ -22,7 +22,7 @@ echo "<style>$css</style>";
         <form method="post">
 
             <input class = "myInput" type="text" name="newWord" placeholder="Introduce una capital">
-            <input class = "myButton" type="submit" value="Añadir" name="addNewWord">
+            <input class = "myButton" type="submit" value="Añadir" name="submit">
 
         </form>
 

@@ -24,10 +24,32 @@ class Word extends DBAbstractModel
 
     /*FIN DE LA CONSTRUCCIÓN DEL MODELO SINGLETON*/
 
+    //Propiedades del objeto
     private $id;
     private $word;
 
-    //Entity functions
+    
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getWord()
+    {
+        return $this->word;
+    }
+
+    public function setWord($word)
+    {
+        $this->word = $word;
+    }
+
+    //Objetos
     public function setEntity()
     {
         $this->query = "INSERT INTO words(word)
@@ -44,13 +66,9 @@ class Word extends DBAbstractModel
 
     public function editEntity()
     {
-
-        $this->query = "
-        UPDATE words
-        SET name=:name,
-        WHERE id = :id
-        ";
-        $this->parameters['word'] = $this->word;
+        $this->query = "UPDATE words SET word=:word WHERE id=:id";
+        $this->parametros['word'] = $this->word;
+        $this->parametros['id'] = $this->id;
         $this->get_results_from_query();
     }
 
@@ -64,19 +82,14 @@ class Word extends DBAbstractModel
 
     //Otros métodos
 
-    public function getId()
+    public function getByName($name)
     {
-        return $this->id;
-    }
+        $name = "%" . $name . "%";
 
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function setName($word)
-    {
-        $this->word = $word;
+        $this->query = "SELECT name, id FROM words WHERE name LIKE :name";
+        $this->parameters['name'] = $name;
+        $this->get_results_from_query();
+        return $this->rows;
     }
 
     public function getAll($user_data = array())
@@ -87,19 +100,9 @@ class Word extends DBAbstractModel
         $this->query = "SELECT id, word FROM words";
         $this->get_results_from_query();
         $result = $this->rows;
-        //Muestra los 4 primeros registros
-        $last = array_slice($result, 0, 4);
+        //Muestra los 4 últimos registros
+        $last = array_slice(array_reverse($result), 0, 4);
         return $last;
-    }
-
-    public function getByName($word)
-    {
-        $word = "%" . $word . "%";
-
-        $this->query = "SELECT word, id FROM words WHERE word LIKE :word";
-        $this->parameters['word'] = $word;
-        $this->get_results_from_query();
-        return $this->rows;
     }
 
     //Métodos que pide la clase para no dar error

@@ -18,11 +18,14 @@ echo "<style>$css</style>";
 
     <main>
 
-        <h2>Añade una nueva palabra.</h2>
+        <h2>Edita una palabra</h2>
+        <?php
+        var_dump($data)
+        ?>
         <form method="post">
-
-            <input class = "myInput" type="text" name="newWord" placeholder="Introduce una capital">
-            <input class = "myButton" type="submit" value="Añadir" name="addNewWord">
+            <!--urldecode():Decodes any %## encoding in the given string. Plus symbols ('+') are decoded to a space character.-->
+            <input class = "myInput" type="text" name="editedWord" value="<?php echo urldecode($data[0]); ?>">
+            <input class = "myButton" type="submit" value="Editar" name="editWord">
 
         </form>
 

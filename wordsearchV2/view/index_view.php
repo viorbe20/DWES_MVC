@@ -26,14 +26,14 @@ echo "<style>$css</style>";
             <input class = "myButton" type="submit" name="add" value="Añadir"><br><br>
         </form>
 
-        <h3>Cuatro primeras capitales</h3>
+        <h3>Cuatro últimas capitales</h3>
 
         <?php
         //Muestra los registros de la bd
         echo "<div id='container'>";
         foreach ($data as $value) {
             echo "<div class='capital'>";
-            echo "<p class='name'>" . $value["word"] . " </p><a href='/repasoJunio/ra3/db/wordSearch/public/index.php/wordsearch/delete/" . $value["id"] . "'>Eliminar</a> <a href='/repasoJunio/ra3/db/wordSearch/public/index.php/wordsearch/edit/" . $value["id"] . "'>Editar</a> </br>";
+            echo "<p class='name'>" . $value["word"] . " </p><a href='/repasoJunio/ra3/db/wordsearchV2/public/index.php/wordsearch/delete/" . $value["id"] ."'>Eliminar</a> <a href='/repasoJunio/ra3/db/wordsearchV2/public/index.php/wordsearch/edit/" . $value["id"] ."/" . $value["word"] ."'>Editar</a> </br>";
             echo "</div>";
             echo ('<br>');
         }
