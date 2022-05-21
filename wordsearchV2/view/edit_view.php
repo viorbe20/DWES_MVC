@@ -19,9 +19,6 @@ echo "<style>$css</style>";
     <main>
 
         <h2>Edita una palabra</h2>
-        <?php
-        var_dump($data)
-        ?>
         <form method="post">
             <!--urldecode():Decodes any %## encoding in the given string. Plus symbols ('+') are decoded to a space character.-->
             <input class = "myInput" type="text" name="editedWord" value="<?php echo urldecode($data[0]); ?>">

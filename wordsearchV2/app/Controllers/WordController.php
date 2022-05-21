@@ -10,7 +10,7 @@ class WordController extends BaseController
 {
 
     //Muestra la página para añadir palabras
-    public function addWordAction($request)
+    public function addWordAction()
     {
         $word = Word::getInstancia();
 
@@ -25,24 +25,24 @@ class WordController extends BaseController
     }
 
     //Muestra la página para editar palabras
+    //$request = str_replace(DIRBASEURL,'',$_SERVER['REQUEST_URI']); 
+    //devuelve detrás de index.php: /edit/id/word
     public function editWordAction($request)
     {
-        // $id = explode('/', $request)[3];
-        // $selectedWord = explode('/', $request)[4];
-        // $data = array($selectedWord);
-
-        $elements = explode("/", $request);
-        $selectedWord = end($elements);
+        $rest = explode("/", $request);
+        $selectedWord = end($rest);
+        //prev() - moves the internal pointer to, and outputs, the previous element in the array
+        $id = prev($rest);
         $data = array($selectedWord);
-        $id = explode('/', $request)[3];
 
         if (isset($_POST['editWord'])) {
             $word = Word::getInstancia();
-            $word->setName($_POST['editedWord']);
+            $word->setWord($_POST['editedWord']);
             $word->setId($id);
             $word->editEntity();
             header('location: ' . DIRBASEURL . '/wordsearch');
         } else {
+            //Carga $data para mostrar la ciudad seleccionada
             $this->renderHTML('..\view\edit_view.php', $data);
         }
     }

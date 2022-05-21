@@ -31,16 +31,16 @@ $router->add(array(
 
 //Enrutamiento a página para eliminar palabra
 $router->add(array(
-    'name'=>'deleteWord',
-    'path'=>'/wordsearch\/delete\/\d{1,3}/',
-    'action'=>[WordController::class, 'deleteWordAction']
+    'name'=>'editWord',
+    'path'=>'/wordsearch\/edit\/\d{1,3}\/\w{1,}/',
+    'action'=>[WordController::class, 'editWordAction']
 ));
 
 //Enrutamiento a página para eliminar palabra
 $router->add(array(
-    'name'=>'editWord',
-    'path'=>'/wordsearch\/edit\/\d{1,3}\/\w{1,}/',
-    'action'=>[WordController::class, 'editWordAction']
+    'name'=>'deleteWord',
+    'path'=>'/wordsearch\/delete\/\d{1,3}/',
+    'action'=>[WordController::class, 'deleteWordAction']
 ));
 
 //Petición y respuesta
