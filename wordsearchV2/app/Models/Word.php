@@ -77,7 +77,7 @@ class Word extends DBAbstractModel
     public function deleteEntity($id)
     {
         $this->query = "DELETE FROM words WHERE id=:id";
-        $this->parameters['id'] = $id;
+        $this->parametros['id'] = $id;
         $this->get_results_from_query();
     }
 
