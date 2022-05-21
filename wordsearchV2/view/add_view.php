@@ -1,3 +1,6 @@
+<?php
+$msg = "";
+?>
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -23,6 +26,7 @@ echo "<style>$css</style>";
 
             <input class = "myInput" type="text" name="newWord" placeholder="Introduce una capital">
             <input class = "myButton" type="submit" value="Añadir" name="addNewWord">
+            <label name="repeatedWord" value=<?php $msg?>></label>
 
         </form>
 

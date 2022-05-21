@@ -123,4 +123,12 @@ footer {
   padding-top: 1%;
   padding-bottom: 1%;
   margin-top: 4%;
+}
+
+#msgExistingWord {
+  position: fixed;
+  color: #fe1900;
+  padding: 10px;
+  top: 30%;
+  right: 45%;
 }/*# sourceMappingURL=style_view.css.map */

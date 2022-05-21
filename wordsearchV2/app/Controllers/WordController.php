@@ -13,14 +13,25 @@ class WordController extends BaseController
     public function addWordAction()
     {
         $word = Word::getInstancia();
+        //Para que no guarde si el input está vacío
+        if (isset($_POST["addNewWord"]) && (!empty($_POST['newWord']))) {
 
-        if (isset($_POST['addNewWord'])) {
-            //Establecemos las propiedades del objeto
-            $word->setWord($_POST['newWord']);
-            $word->setEntity();
-            header('location:' . DIRBASEURL . '/wordsearch');
-        }  else {
-            $this->renderHTML('..\view\add_view.php');
+            if (!empty($_POST["newWord"])) {
+
+                //Comprueba que no esté repetida
+                $data = $word->getByName($_POST["newWord"]);
+                if (!current($data)) {
+                    echo "no repetido";
+                    $word->setWord($_POST['newWord']);
+                    $word->setEntity();
+                    header('location: ' . DIRBASEURL . '/wordsearch');
+                } else {
+                    echo "<div id='msgExistingWord'> Esa palabra ya existe</div>";
+                    $this->renderHTML("../view/add_view.php");
+                }
+            }
+        } else {
+            $this->renderHTML("../view/add_view.php");
         }
     }
 
