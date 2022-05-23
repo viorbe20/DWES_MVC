@@ -29,10 +29,16 @@ echo "<style>$css</style>";
         <br>
         <h3>Cuatro últimas capitales</h3>
         <br>
+
         <form action="" method="post">
             <input class="myInput" type="text" name="inputWord" id="inputWord" placeholder="Busca una capital">
             <input class="myButton" type="submit" name="search" value="Buscar">
-            <input class="myButton" type="submit" name="add" value="Añadir"><br><br>
+            <?php
+            //Muestra botón añadir solo con admin
+            if (!empty($data[0])) {
+                echo "<input class=\"myButton\" type=\"submit\" name=\"add\" value=\"Añadir\"><br><br>";
+            }
+            ?>
         </form>
 
 

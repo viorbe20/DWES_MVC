@@ -33,7 +33,8 @@ class DefaultController extends BaseController
                 $this->renderHTML('../view/index_view.php', $data);
             }
         } else if (isset($_POST["search"]) && (!empty($_POST["inputWord"]))) {
-            $data = $word->getByName($_POST["inputWord"]);
+            array_push($data, $user_data);
+            array_push($data, $word->getByName($_POST["inputWord"]));
             $this->renderHTML("../view/index_view.php", $data);
         } else if (isset($_POST['add'])) {
             header('location:' . DIRBASEURL . '/wordsearch/add');
