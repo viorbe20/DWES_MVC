@@ -15,26 +15,33 @@ class DefaultController extends BaseController
         $data = array();
         $user_data = array();
         $word = Word::getInstancia();
+        $user = new User();
 
         //Login
         if (isset($_POST["login"])) {
+            $user_data = $user->getByName($_POST['username']);
             if ((!empty($_POST['username']) || (!empty($_POST['password'])))) {
+                // $user->getByLogin($_POST["username"], $_POST["password"]);
+                // array_push($data, $user);
+                // array_push($data, $word->getAll());
+                // $this->renderHTML('../view/index_view.php', $data);
                 //comprobar que es correcto
-                $user = new User();
-                $_SESSION["user"]["username"] =  $_POST["username"];
-                $_SESSION["user"]["password"] =  $_POST["password"];
-                array_push($user_data, "user1", "user1");
-                array_push($data, $user_data);
-                array_push($data, $word->getAll());
-                $this->renderHTML('../view/index_view.php', $data);
+                //$user_data = $user->getByName($_POST['username']);
+
+                if ($user_data[0]["passwrd"] == $_POST['password']) {
+                    array_push($data, $user_data, $word->getAll());
+                    $this->renderHTML("../view/index_view.php", $data);
+                } else {
+                    $this->renderHTML("../view/index_view.php", $data);
+                }
             } else {
                 //Renderiza página inicio con los datos  
                 $data = $word->getAll();
                 $this->renderHTML('../view/index_view.php', $data);
             }
+            //Busca una palabra
         } else if (isset($_POST["search"]) && (!empty($_POST["inputWord"]))) {
-            array_push($data, $user_data);
-            array_push($data, $word->getByName($_POST["inputWord"]));
+            array_push($data, "", $word->getAll());
             $this->renderHTML("../view/index_view.php", $data);
         } else if (isset($_POST['add'])) {
             header('location:' . DIRBASEURL . '/wordsearch/add');

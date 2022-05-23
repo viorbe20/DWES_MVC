@@ -9,6 +9,13 @@ use App\Core\Router;
 
 $router = new Router();
 
+//Enrutamiento test
+$router->add(array(
+    'name'=>'logout',
+    'path'=>'/wordsearch\/logout/',
+    'action'=>[DefaultController::class, 'logoutAction']
+));
+
 //Enrutamiento a la página de inicio
 $router->add(array(
     'name'=>'index',

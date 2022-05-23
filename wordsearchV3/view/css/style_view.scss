@@ -6,7 +6,6 @@
 
 header {
   background-color: #f5d577c7;
-  
 
   h1 {
     text-align: center;
@@ -39,8 +38,7 @@ body {
 
     h3 {
       color: #1f535c;
-      padding-bottom: 10px;
-text-align: center;
+      text-align: center;
     }
 
     #containerNoLogin {
@@ -79,16 +77,16 @@ text-align: center;
           justify-content: center;
           color: #1f535c;
           font-weight: bold;
-          border-top-left-radius:5px;
-          border-top-right-radius:5px;
-          border-bottom-left-radius:5px;
-          border-bottom-right-radius:5px;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
           border-color: white;
           font-size: 14px;
           display: flex;
           align-items: center;
           width: 10%;
-        
+
           &:hover {
             background: linear-gradient(#cdcdcd, white);
             padding-right: 5px;
@@ -99,9 +97,9 @@ text-align: center;
     }
     #container {
       height: 330px;
+      margin-top: 2%;
 
       .capital {
-        *background-color: #cdcdcd;
         margin-left: 160px;
         margin-right: 160px;
         display: flex;
@@ -126,16 +124,16 @@ text-align: center;
           justify-content: center;
           color: #1f535c;
           font-weight: bold;
-          border-top-left-radius:5px;
-          border-top-right-radius:5px;
-          border-bottom-left-radius:5px;
-          border-bottom-right-radius:5px;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
           border-color: white;
           font-size: 14px;
           display: flex;
           align-items: center;
           width: 10%;
-        
+
           &:hover {
             background: linear-gradient(#cdcdcd, white);
             padding-right: 5px;
@@ -159,22 +157,21 @@ footer {
   left: 0px;
 }
 
-.myInput{
+.myInput {
   height: 35px;
   width: 300px;
 }
 
-.myButton{
-
+.myButton {
   background-color: #1f535c;
   color: white;
   width: 100px;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-top-left-radius:5px;
-  border-top-right-radius:5px;
-  border-bottom-left-radius:5px;
-  border-bottom-right-radius:5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   border-color: white;
 
   &:hover {
@@ -183,7 +180,7 @@ footer {
   }
 }
 
-#msg{
+#msg {
   text-align: center;
   color: white;
   background-color: #fe1900;
@@ -194,25 +191,23 @@ footer {
   margin-top: 4%;
 }
 
-#msgExistingWord{
+#msgExistingWord {
   position: fixed;
   color: #fe1900;
   padding: 10px;
   top: 30%;
   right: 45%;
-
 }
 
-#msgLogin{
+#msgLogin {
   position: fixed;
   color: #fe1900;
   padding: 10px;
   top: 55%;
   left: 40%;
-
 }
 
-#form-login{
+#form-login {
   *background-color: pink;
   display: flex;
   flex-direction: column;
@@ -220,11 +215,29 @@ footer {
   padding: 5px;
   margin-top: 3%;
 
-  input{
+  input {
     margin-top: 1%;
   }
 
   #buttons {
     margin-top: 1%;
+  }
+}
+
+#auth {
+  position: fixed;
+  top: 2%;
+  right: 10%;
+  *background-color: #1f535c;
+  display: flex;
+  padding-left: 2%;
+
+  #img {
+    font-size: 30px;
+  }
+
+  div {
+    margin-left: 10px;
+    padding-top: 4%;
   }
 }

@@ -51,28 +51,48 @@ class User extends DBAbstractModel
         return $this->password;
     }
 
-    public function sePassword($password)
+    public function setPassword($password)
     {
         $this->password = $password;
     }
 
-
-    public function getByName($filtro = '')
+    public function getByLogin($username = '', $passwrd = '')
     {
-        if ($filtro != '') {
-            $user = "%" . $filtro . "%";
-            $this->query = "SELECT * FROM users WHERE (user LIKE :user)";
-            // Cargamos los parámetros
-            $this->parametros['user'] = $user;
+        if ($username != '' && $passwrd == '') {
+            $this->query = "SELECT * FROM users WHERE username = :username AND passwrd = :passwrd";
 
-            // Ejecutamos consulta que devuelve registros
+            //Cargamos los parámetros.
+            $this->parametros['username'] = $username;
+            $this->parametros['passwrd'] = $passwrd;
             $this->get_results_from_query();
         }
         if (count($this->rows) == 1) {
             foreach ($this->rows[0] as $propiedad => $valor) {
                 $this->$propiedad = $valor;
             }
+            $this->mensaje = 'Encontrado';
+        } else {
+            $this->mensaje = 'No encontrado';
         }
+        return $this->rows;
+    }
+
+    public function getByName($filtro = '')
+    {
+        if ($filtro != '') {
+            $username = "%" . $filtro . "%";
+            $this->query = "SELECT * FROM users WHERE (username LIKE :username)";
+            // Cargamos los parámetros
+            $this->parametros['username'] = $username;
+
+            // Ejecutamos consulta que devuelve registros
+            $this->get_results_from_query();
+        }
+        // if (count($this->rows) == 1) {
+        //     foreach ($this->rows[0] as $propiedad => $valor) {
+        //         $this->$propiedad = $valor;
+        //     }
+        // }
         return $this->rows;
     }
 
