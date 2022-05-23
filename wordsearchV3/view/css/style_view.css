@@ -10,14 +10,15 @@ header {
 header h1 {
   text-align: center;
   color: #1f535c;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 body {
   display: flex;
   flex-direction: column;
   height: auto;
+  *background-color: blueviolet;
 }
 body main {
   display: flex;
@@ -35,14 +36,63 @@ body main form {
 body main h3 {
   color: #1f535c;
   padding-bottom: 10px;
-  margin-left: 170px;
-  margin-right: 40px;
+  text-align: center;
+}
+body main #containerNoLogin {
+  margin-top: 3%;
+  height: 330px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10%;
+  margin-right: 10%;
+  justify-content: center;
+}
+body main #containerNoLogin .capital {
+  *background-color: #cdcdcd;
+  margin-left: 2%;
+  margin-right: 2%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 18px;
+  height: 20%;
+}
+body main #containerNoLogin .capital .name {
+  text-align: center;
+  text-decoration: none;
+  color: #1f535c;
+  background-color: #fce9a6;
+  width: 200px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+body main #containerNoLogin .capital a {
+  background-color: #cdcdcd;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  color: #1f535c;
+  font-weight: bold;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  width: 10%;
+}
+body main #containerNoLogin .capital a:hover {
+  background: linear-gradient(#cdcdcd, white);
+  padding-right: 5px;
+  padding-left: 5px;
 }
 body main #container {
   height: 330px;
 }
 body main #container .capital {
-  background-color: #cdcdcd;
+  *background-color: #cdcdcd;
   margin-left: 160px;
   margin-right: 160px;
   display: flex;
@@ -53,31 +103,33 @@ body main #container .capital .name {
   text-align: center;
   text-decoration: none;
   color: #1f535c;
+  background-color: #fce9a6;
   width: 200px;
   padding-top: 20px;
   padding-bottom: 20px;
   font-weight: bold;
 }
 body main #container .capital a {
-  text-align: center;
+  background-color: #cdcdcd;
   text-decoration: none;
+  text-align: center;
+  justify-content: center;
   color: #1f535c;
-  background-color: #fce9a6;
-  width: 100px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  box-shadow: 0px 0px 0px 2px #1f535c;
-  text-shadow: 0px 1px 0px #6fa283;
+  font-weight: bold;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  width: 10%;
 }
 body main #container .capital a:hover {
-  background: linear-gradient(#1f535c, #6fa283);
-  color: #fce9a6;
+  background: linear-gradient(#cdcdcd, white);
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 footer {
@@ -141,16 +193,17 @@ footer {
   left: 40%;
 }
 
-#login {
+#form-login {
+  *background-color: pink;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 5px;
   margin-top: 3%;
 }
-#login input {
-  margin-top: 2%;
+#form-login input {
+  margin-top: 1%;
 }
-#login #buttons {
-  margin-top: 2%;
+#form-login #buttons {
+  margin-top: 1%;
 }/*# sourceMappingURL=style_view.css.map */

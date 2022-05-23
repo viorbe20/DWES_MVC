@@ -9,25 +9,11 @@ use App\Core\Router;
 
 $router = new Router();
 
-//Enrutamiento test
-$router->add(array(
-    'name'=>'test',
-    'path'=>'/test/',
-    'action'=>[TestController::class, 'testAction']
-));
-
 //Enrutamiento a la página de inicio
 $router->add(array(
     'name'=>'index',
     'path'=>'/wordsearch/',
     'action'=>[DefaultController::class, 'indexAction']
-));
-
-//Enrutamiento login
-$router->add(array(
-    'name'=>'login',
-    'path'=>'/wordsearch\/login/',
-    'action'=>[UserController::class, 'loginAction']
 ));
 
 //Enrutamiento a página para añadir palabra

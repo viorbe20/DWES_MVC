@@ -29,6 +29,7 @@ class UserController extends BaseController
                         echo "<div id='msgLogin'> Usuario y contraseña no coinciden.</div>";
                         $this->renderHTML('../view/login_view.php', $data);
                     } else {
+                        //Da acceso a la app
                         header('location: ' . DIRBASEURL . '/wordsearch');
                     }
                 }
