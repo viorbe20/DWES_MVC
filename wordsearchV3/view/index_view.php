@@ -1,25 +1,4 @@
 <?php
-use App\Models\User;
-
-session_start();
-if (!isset($_SESSION['user'])) {
-    $_SESSION['user'] = array(
-        'username' => '',
-        'passwrd' => ''
-    );
-}
-
-if (isset($_POST['login'])) {
-    $user = new User();
-    $user_data= $user->getByName($_POST['username']);
-    if (!empty($user_data)) {
-        foreach ($user_data as $value) {
-            $_SESSION['user']["username"] = $value["username"];
-            $_SESSION['user']["passwrd"] = $value["passwrd"];
-        }
-    }
-    //header('location:' . DIRBASEURL . '/wordsearch');
-}
 
 ?>
 <!DOCTYPE html>
@@ -38,18 +17,6 @@ if (isset($_POST['login'])) {
 include("require/view_header.html");
 $css = file_get_contents("../view/css/style_view.css");
 echo "<style>$css</style>";
-// var_dump("Tamaño=> " . count($data) . "<br>");
-
-//Carga datos del usuario actual
-// if (empty($data[0])) {
-//     $_SESSION['user']["username"] = "";
-//     $_SESSION['user']["passwrd"] = "";
-// } else {
-//     foreach ($data[0] as $key => $value) {
-//         $_SESSION['user']["username"] = $value["username"];
-//         $_SESSION['user']["passwrd"] = $value["passwrd"];
-//     }
-// }
 
 var_dump($_SESSION['user']);
 ?>
@@ -61,7 +28,7 @@ var_dump($_SESSION['user']);
     ?>
         <form id="form-login" action="" method="post">
             <input class="myInput" type="text" name="username" id="inputWord" placeholder="Nombre de usuario" value="admin">
-            <input class="myInput" type="text" name="password" id="inputWord" placeholder="Contraseña" value="admin">
+            <input class="myInput" type="text" name="passwrd" id="inputWord" placeholder="Contraseña" value="admin">
             <div id="buttons">
                 <input class="myButton" type="submit" name="login" value="Entrar">
             </div>
@@ -71,21 +38,30 @@ var_dump($_SESSION['user']);
     }
     ?>
     <main>
-        <br>
-        <h3>Cuatro últimas capitales</h3>
-        <br>
+        <?php
+        //Muestra la opción buscar solo con login
+        if ($_SESSION['user']["username"] != "") {
+        ?>
 
-        <form action="" method="post">
-            <input class="myInput" type="text" name="inputWord" id="inputWord" placeholder="Busca una capital">
-            <input class="myButton" type="submit" name="search" value="Buscar">
-            <?php
-            //Muestra botón añadir solo con admin
-            if  ($_SESSION['user']["username"] == "admin") {
+            <br>
+            <h3>Cuatro últimas capitales</h3>
+            <br>
+
+            <form action="" method="post">
+                <input class="myInput" type="text" name="inputWord" id="inputWord" placeholder="Busca una capital">
+                <input class="myButton" type="submit" name="search" value="Buscar">
+                <?php
+                //Muestra botón añadir solo con admin
+                if ($_SESSION['user']["username"] == "admin") {
                     echo "<input class=\"myButton\" type=\"submit\" name=\"add\" value=\"Añadir\"><br><br>";
-            }
+                }
 
-            ?>
-        </form>
+                ?>
+            </form>
+
+        <?php
+        }
+        ?>
 
 
         <?php

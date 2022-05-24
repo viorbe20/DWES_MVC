@@ -1,0 +1,39 @@
+En index_view:
+Carga datos del usuario enviados desde ek Deafult controller
+// var_dump("Tamaño=> " . count($data) . "<br>");
+
+//Carga datos del usuario actual
+// if (empty($data[0])) {
+//     $_SESSION['user']["username"] = "";
+//     $_SESSION['user']["passwrd"] = "";
+// } else {
+//     foreach ($data[0] as $key => $value) {
+//         $_SESSION['user']["username"] = $value["username"];
+//         $_SESSION['user']["passwrd"] = $value["passwrd"];
+//     }
+// }
+
+
+//Route antiguo
+//Petición y respuesta
+$request = str_replace(DIRBASEURL,'',$_SERVER['REQUEST_URI']);
+$route = $router->matchs($request);
+
+if($route) {
+    $controllerName = $route['action'][0];
+    $actionName = $route['action'][1];
+    $controller = new $controllerName;
+    $controller->$actionName($request);
+
+} else {
+    echo "No route matched";
+}
+
+
+///getbylogin
+                // $user->getByLogin($_POST["username"], $_POST["password"]);
+                // array_push($data, $user);
+                // array_push($data, $word->getAll());
+                // $this->renderHTML('../view/index_view.php', $data);
+                //comprobar que es correcto
+                //$user_data = $user->getByName($_POST['username']);

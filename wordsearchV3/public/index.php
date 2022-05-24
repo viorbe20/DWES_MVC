@@ -3,17 +3,23 @@ require "../vendor/autoload.php";
 require "../app/Config/constantes.php";
 use App\Controllers\DefaultController;
 use App\Controllers\WordController;
-use App\Controllers\TestController;
 use App\Controllers\UserController;
 use App\Core\Router;
 
+session_start();
+//Si no existe la sesión la creamos vacía
+if (!isset($_SESSION['user'])) {
+    $_SESSION['user']["username"] = "";
+    $_SESSION['user']["passwrd"] = "";
+}
+
 $router = new Router();
 
-//Enrutamiento test
+//Enrutamiento logout
 $router->add(array(
     'name'=>'logout',
     'path'=>'/wordsearch\/logout/',
-    'action'=>[DefaultController::class, 'logoutAction']
+    'action'=>[UserController::class, 'logoutAction']
 ));
 
 //Enrutamiento a la página de inicio
