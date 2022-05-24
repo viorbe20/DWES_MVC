@@ -23,8 +23,8 @@ class User extends DBAbstractModel
     }
 
     private $id;
-    private $user;
-    private $password;
+    private $username;
+    private $passwrd;
 
     public function getId()
     {
@@ -36,65 +36,54 @@ class User extends DBAbstractModel
         $this->id = $id;
     }
 
-    public function getUser()
+    public function getUsername()
     {
-        return $this->user;
+        return $this->username;
     }
 
-    public function setUser($user)
+    public function setUsername($username)
     {
-        $this->user = $user;
+        $this->username = $username;
     }
 
-    public function getPassword()
+    public function getPasswrd()
     {
-        return $this->password;
+        return $this->passwrd;
     }
 
-    public function setPassword($password)
+    public function setPasswrd($passwrd)
     {
-        $this->password = $password;
+        $this->passwrd = $passwrd;
     }
 
-    public function getByLogin($username = '', $passwrd = '')
+    public function getByLogin()
     {
-        if ($username != '' && $passwrd == '') {
-            $this->query = "SELECT * FROM users WHERE username = :username AND passwrd = :passwrd";
-
-            //Cargamos los parámetros.
-            $this->parametros['username'] = $username;
-            $this->parametros['passwrd'] = $passwrd;
-            $this->get_results_from_query();
-        }
-        if (count($this->rows) == 1) {
-            foreach ($this->rows[0] as $propiedad => $valor) {
-                $this->$propiedad = $valor;
-            }
-            $this->mensaje = 'Encontrado';
-        } else {
-            $this->mensaje = 'No encontrado';
-        }
-        return $this->rows;
+        $this->query = "SELECT * FROM users WHERE username=:username AND passwrd=:passwrd";
+        $this->parametros['username'] = $this->username;
+        $this->parametros['passwrd'] = $this->passwrd;
+        $this->get_results_from_query();
+        $result = $this->rows;
+        return $result;
     }
 
-    public function getByName($filtro = '')
-    {
-        if ($filtro != '') {
-            $username = "%" . $filtro . "%";
-            $this->query = "SELECT * FROM users WHERE (username LIKE :username)";
-            // Cargamos los parámetros
-            $this->parametros['username'] = $username;
+    // public function getByName($filtro = '')
+    // {
+    //     if ($filtro != '') {
+    //         $username = "%" . $filtro . "%";
+    //         $this->query = "SELECT * FROM users WHERE (username LIKE :username)";
+    //         // Cargamos los parámetros
+    //         $this->parametros['username'] = $username;
 
-            // Ejecutamos consulta que devuelve registros
-            $this->get_results_from_query();
-        }
-        // if (count($this->rows) == 1) {
-        //     foreach ($this->rows[0] as $propiedad => $valor) {
-        //         $this->$propiedad = $valor;
-        //     }
-        // }
-        return $this->rows;
-    }
+    //         // Ejecutamos consulta que devuelve registros
+    //         $this->get_results_from_query();
+    //     }
+    //     // if (count($this->rows) == 1) {
+    //     //     foreach ($this->rows[0] as $propiedad => $valor) {
+    //     //         $this->$propiedad = $valor;
+    //     //     }
+    //     // }
+    //     return $this->rows;
+    // }
 
 
     public function getEntity($id)
@@ -115,8 +104,8 @@ class User extends DBAbstractModel
     public function get()
     {
     }
-    public function delete($id)
-    {
+    public function delete($user_data = array()){
+
     }
     public function edit()
     {

@@ -17,13 +17,13 @@
 include("require/view_header.html");
 $css = file_get_contents("../view/css/style_view.css");
 echo "<style>$css</style>";
-//var_dump($_SESSION['user']);
+var_dump($_SESSION['user']);
 ?>
 
 <body>
     <?php
-    //Vista sin login. data[0] contiene los datos de usuario
-    if ($_SESSION['user']["username"] == "") {
+    //Fomulario login se muestra mientras se está de invitado
+    if ($_SESSION['user']['profile'] == "guest") {
     ?>
         <form id="form-login" action="" method="post">
             <input class="myInput" type="text" name="username" id="inputWord" placeholder="Nombre de usuario" value="admin">
@@ -38,16 +38,15 @@ echo "<style>$css</style>";
     ?>
     <main>
         <?php
-        //Muestra la opción buscar solo con login
-        if ($_SESSION['user']["username"] != "") {
         ?>
         <br><br>
+        <!--Formulario de búsqueda se muestra siempre-->
             <form action="" method="post">
                 <input class="myInput" type="text" name="inputWord" id="inputWord" placeholder="Busca una capital">
                 <input class="myButton" type="submit" name="search" value="Buscar">
                 <?php
                 //Muestra botón añadir solo con admin
-                if ($_SESSION['user']["username"] == "admin") {
+                if ($_SESSION['user']["profile"] == "admin") {
                     echo "<input class=\"myButton\" type=\"submit\" name=\"add\" value=\"Añadir\"><br><br>";
                 }
 
@@ -55,7 +54,7 @@ echo "<style>$css</style>";
             </form>
 
         <?php
-        }
+        
         ?>
 
 

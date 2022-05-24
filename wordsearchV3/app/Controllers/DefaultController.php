@@ -19,43 +19,45 @@ class DefaultController extends BaseController
 
         //Login
         if (isset($_POST["login"])) {
+
             if ((!empty($_POST['username']) || (!empty($_POST['passwrd'])))) {
-                //Extraemos usuario de la bbdd
-                $user_data = $user->getByName($_POST['username']);
-                //Si exite, cargamos sesión con username y password
-                if (!empty($user_data)) {
-                    foreach ($user_data as $value) {
-                        $_SESSION['user']["username"] = $value["username"];
-                        $_SESSION['user']["passwrd"] = $value["passwrd"];
+                $user = User::getInstancia();
+                $user->setUsername($_POST['username']);
+                $user->setPasswrd($_POST['passwrd']);
+                $result = $user->getByLogin();
+
+                //Si hay coincidencia la devuelve
+                if (!empty($result)) {
+                    foreach ($result as $value) {
+                        $_SESSION['user']['profile'] = $value['prfile'];
+                        $_SESSION['user']['username'] = $value['username'];
+                        array_push($user_data, $_SESSION['user']);
+                        array_push($data, $user_data, $word->getAll());
+                        $this->renderHTML('../view/index_view.php', $data);
                     }
-                }
-                //Si la contraseña coincide con la introducida por el usuario cargamos $data con SESSION['user] y palabras
-                if ($user_data[0]["passwrd"] == $_POST['passwrd']) {
-                    array_push($data, $user_data, $word->getAll());
-                    $this->renderHTML("../view/index_view.php", $data);
                 } else {
                     //Si los datos no coinciden, iniciamos sesión con datos vacíos
                     array_push($data, $user_data, $word->getAll());
                     $this->renderHTML('../view/index_view.php', $data);
                 }
-            } else {
-                //Renderiza página inicio con los datos  
-                array_push($data, $user_data, $word->getAll());
-                $this->renderHTML('../view/index_view.php', $data);
             }
-        //Busca una palabra
+
+            //Busca una palabra
         } else if (isset($_POST["search"]) && (!empty($_POST["inputWord"]))) {
             array_push($data, $user_data, $word->getByName($_POST["inputWord"]));
             $this->renderHTML('../view/index_view.php', $data);
-        //Añade una palabra
+            
+            //Añade una palabra
         } else if (isset($_POST['add'])) {
             //header('location:' . DIRBASEURL . '/wordsearch/add');
             array_push($data, $user_data, $word->getAll());
             $this->renderHTML('../view/add_view.php', $data);
-        //Elimina una palabra
+            
+            //Elimina una palabra
         } else if (isset($_POST['delete'])) {
             header('location:' . DIRBASEURL . '/wordsearch/delete');
-        //Renderizado por defecto
+            
+            //Renderizado por defecto
         } else {
             //Renderiza página inicio con los datos  
             array_push($data, $user_data, $word->getAll());

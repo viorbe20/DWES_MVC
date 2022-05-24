@@ -37,3 +37,22 @@ if($route) {
                 // $this->renderHTML('../view/index_view.php', $data);
                 //comprobar que es correcto
                 //$user_data = $user->getByName($_POST['username']);
+
+
+
+
+///getByLogin
+                // //Extraemos usuario de la bbdd
+                // $user_data = $user->getByName($_POST['username']);
+                // //Si exite, cargamos sesión con username y password
+                // if (!empty($user_data)) {
+                //     foreach ($user_data as $value) {
+                //         $_SESSION['user']["username"] = $value["username"];
+                //         $_SESSION['user']["passwrd"] = $value["passwrd"];
+                //     }
+                // }
+                // //Si se hace el login, enviamos $data con tipo de profile
+                // if ($user_data[0]["passwrd"] == $_POST['passwrd']) {
+                //     $user_data = $_SESSION['profile'] =  $value["username"];
+                //     array_push($data, $user_data, $word->getAll());
+                //     $this->renderHTML("../view/index_view.php", $data);
