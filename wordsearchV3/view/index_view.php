@@ -17,7 +17,7 @@
 include("require/view_header.html");
 $css = file_get_contents("../view/css/style_view.css");
 echo "<style>$css</style>";
-
+var_dump($data);
 var_dump($_SESSION['user']);
 ?>
 
@@ -65,9 +65,9 @@ var_dump($_SESSION['user']);
 
 
         <?php
-        //Acceso sin login
-        if ($_SESSION['user']["username"] == "") {
-            if (!empty($data)) {
+        //Acceso sin login o guest
+        if (($_SESSION['user']["username"] == "") || ($_SESSION['user']["username"] == "guest")) {
+            if (!empty($data[1])) {
                 //Muestra los registros de la bd
                 echo "<div id='containerNoLogin'>";
                 foreach ($data[1] as $value) {
@@ -80,9 +80,8 @@ var_dump($_SESSION['user']);
             } else {
                 echo "<div id='msg'>No hay ningún registro en la tabla</div>";
             }
-        } else { //Acceso con login
-            if ($_SESSION['user']["username"] != "") {
-                //Muestra los registros de la bd
+        } else { //Acceso admin
+            if (!empty($data[1])) {
                 echo "<div id=\"auth\">
                 <span id=\"img\" class=\"material-symbols-outlined\">
                 account_circle_full
@@ -100,7 +99,7 @@ var_dump($_SESSION['user']);
                 }
                 echo "</div>";
             } else {
-                echo "<div id='msg' >No hay ningún registro en la tabla</div>";
+                echo "<div id='msg'>No hay ningún registro en la tabla</div>";
             }
         }
 

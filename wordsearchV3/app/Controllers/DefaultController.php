@@ -45,7 +45,7 @@ class DefaultController extends BaseController
             }
         //Busca una palabra
         } else if (isset($_POST["search"]) && (!empty($_POST["inputWord"]))) {
-            array_push($data, $user_data, $word->getAll());
+            array_push($data, $user_data, $word->getByName($_POST["inputWord"]));
             $this->renderHTML('../view/index_view.php', $data);
         //Añade una palabra
         } else if (isset($_POST['add'])) {
