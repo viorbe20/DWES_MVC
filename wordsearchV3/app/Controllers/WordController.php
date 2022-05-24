@@ -31,7 +31,7 @@ class WordController extends BaseController
                 }
             }
         } else {
-            $this->renderHTML("../view/add_view.php");
+            $this->renderHTML("../view/index_view.php");
         }
     }
 

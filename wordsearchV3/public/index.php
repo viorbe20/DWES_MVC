@@ -18,35 +18,35 @@ $router = new Router();
 //Enrutamiento logout
 $router->add(array(
     'name'=>'logout',
-    'path'=>'/wordsearch\/logout/',
+    'path'=>'/^\/wordsearch\/logout$/',
     'action'=>[UserController::class, 'logoutAction']
 ));
 
 //Enrutamiento a la página de inicio
 $router->add(array(
     'name'=>'index',
-    'path'=>'/wordsearch/',
+    'path'=>'/^\/wordsearch$/',
     'action'=>[DefaultController::class, 'indexAction']
 ));
 
 //Enrutamiento a página para añadir palabra
 $router->add(array(
     'name'=>'addWord',
-    'path'=>'/wordsearch\/add/',
+    'path'=>'/^\/wordsearch\/add$/',
     'action'=>[WordController::class, 'addWordAction']
 ));
 
 //Enrutamiento a página para eliminar palabra
 $router->add(array(
     'name'=>'editWord',
-    'path'=>'/wordsearch\/edit\/\d{1,3}\/\w{1,}/',
+    'path'=>'/^\/wordsearch\/edit\/\d{1,3}\/\w{1,}$/',
     'action'=>[WordController::class, 'editWordAction']
 ));
 
 //Enrutamiento a página para eliminar palabra
 $router->add(array(
     'name'=>'deleteWord',
-    'path'=>'/wordsearch\/delete\/\d{1,3}/',
+    'path'=>'/^\/wordsearch\/delete\/\d{1,3}$/',
     'action'=>[WordController::class, 'deleteWordAction']
 ));
 

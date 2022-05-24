@@ -8,10 +8,10 @@ require_once('..\app\Config\constantes.php');
 
 class UserController extends BaseController
 {
-    public function logoutAction(){
-        //session_start();
-        unset($_SESSION['user']);
+    public function logoutAction()
+    {
+        unset($_SESSION);
         session_destroy();
-        header('location:' . DIRBASEURL . '/wordsearch');
+        header('Location:' . DIRBASEURL . '/wordsearch');
     }
 }

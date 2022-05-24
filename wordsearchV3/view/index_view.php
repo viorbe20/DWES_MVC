@@ -17,8 +17,7 @@
 include("require/view_header.html");
 $css = file_get_contents("../view/css/style_view.css");
 echo "<style>$css</style>";
-var_dump($data);
-var_dump($_SESSION['user']);
+//var_dump($_SESSION['user']);
 ?>
 
 <body>
@@ -42,11 +41,7 @@ var_dump($_SESSION['user']);
         //Muestra la opción buscar solo con login
         if ($_SESSION['user']["username"] != "") {
         ?>
-
-            <br>
-            <h3>Cuatro últimas capitales</h3>
-            <br>
-
+        <br><br>
             <form action="" method="post">
                 <input class="myInput" type="text" name="inputWord" id="inputWord" placeholder="Busca una capital">
                 <input class="myButton" type="submit" name="search" value="Buscar">
@@ -69,7 +64,10 @@ var_dump($_SESSION['user']);
         if (($_SESSION['user']["username"] == "") || ($_SESSION['user']["username"] == "guest")) {
             if (!empty($data[1])) {
                 //Muestra los registros de la bd
-                echo "<div id='containerNoLogin'>";
+                echo "<br>
+                <h3>Cuatro últimas capitales</h3>
+                <br>
+                <div id='containerNoLogin'>";
                 foreach ($data[1] as $value) {
                     echo "<div class='capital'>";
                     echo "<p class='name'>" . $value["word"] . "</br>";
@@ -88,12 +86,16 @@ var_dump($_SESSION['user']);
                 </span>
                 <div>" . $_SESSION['user']['username'] . "</div>
                 <div>
-                <a href='logout.php'>Cerrar sesión</a></div>
+                <a href='" . DIRBASEURL . "/wordsearch/logout'>Cerrar sesión</a></div>
                 </div>";
-                echo "<div id='container'>";
+                
+                echo "<br>
+                <h3>Cuatro últimas capitales</h3>
+                <br>
+                <div id='container'>";
                 foreach ($data[1] as $value) {
                     echo "<div class='capital'>";
-                    echo "<p class='name'>" . $value["word"] . " </p><a href='/repasoJunio/ra3/db/wordsearchV2/public/index.php/wordsearch/delete/" . $value["id"] . "/" . $value["word"]  . "'>Eliminar</a> <a href='/repasoJunio/ra3/db/wordsearchV2/public/index.php/wordsearch/edit/" . $value["id"] . "/" . $value["word"] . "'>Editar</a> </br>";
+                    echo "<p class='name'>" . $value["word"] . " </p><a href='/repasoJunio/ra3/db/wordsearchV3/public/index.php/wordsearch/delete/" . $value["id"] . "/" . $value["word"]  . "'>Eliminar</a> <a href='/repasoJunio/ra3/db/wordsearchV3/public/index.php/wordsearch/edit/" . $value["id"] . "/" . $value["word"] . "'>Editar</a> </br>";
                     echo "</div>";
                     echo ('<br>');
                 }

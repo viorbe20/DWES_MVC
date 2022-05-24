@@ -49,7 +49,9 @@ class DefaultController extends BaseController
             $this->renderHTML('../view/index_view.php', $data);
         //Añade una palabra
         } else if (isset($_POST['add'])) {
-            header('location:' . DIRBASEURL . '/wordsearch/add');
+            //header('location:' . DIRBASEURL . '/wordsearch/add');
+            array_push($data, $user_data, $word->getAll());
+            $this->renderHTML('../view/add_view.php', $data);
         //Elimina una palabra
         } else if (isset($_POST['delete'])) {
             header('location:' . DIRBASEURL . '/wordsearch/delete');
