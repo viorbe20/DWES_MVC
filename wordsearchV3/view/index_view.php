@@ -17,10 +17,24 @@
 include("require/view_header.html");
 $css = file_get_contents("../view/css/style_view.css");
 echo "<style>$css</style>";
-var_dump($_SESSION['user']);
+var_dump($_SESSION['user']['profile']);
 ?>
 
 <body>
+    <!--Muestra la información del perfil que está conectado-->
+    <div id="auth">
+        <section id="s1">
+            <span id="img" class="material-symbols-outlined">
+                account_circle_full
+            </span>
+            <div><?php echo strtoupper($_SESSION['user']['profile'])?></div>
+        </section>
+        
+        <section id="s2">
+            <a id="icon-logout" href='" . DIRBASEURL . "/wordsearch/logout'><span class="material-symbols-outlined">logout</span><label>Salir</label></a>
+        </section>
+    </div>
+
     <?php
     //Fomulario login se muestra mientras se está de invitado
     if ($_SESSION['user']['profile'] == "guest") {
@@ -41,26 +55,26 @@ var_dump($_SESSION['user']);
         ?>
         <br><br>
         <!--Formulario de búsqueda se muestra siempre-->
-            <form action="" method="post">
-                <input class="myInput" type="text" name="inputWord" id="inputWord" placeholder="Busca una capital">
-                <input class="myButton" type="submit" name="search" value="Buscar">
-                <?php
-                //Muestra botón añadir solo con admin
-                if ($_SESSION['user']["profile"] == "admin") {
-                    echo "<input class=\"myButton\" type=\"submit\" name=\"add\" value=\"Añadir\"><br><br>";
-                }
+        <form action="" method="post">
+            <input class="myInput" type="text" name="inputWord" id="inputWord" placeholder="Busca una capital">
+            <input class="myButton" type="submit" name="search" value="Buscar">
+            <?php
+            //Muestra botón añadir solo con admin
+            if ($_SESSION['user']["profile"] == "admin") {
+                echo "<input class=\"myButton\" type=\"submit\" name=\"add\" value=\"Añadir\"><br><br>";
+            }
 
-                ?>
-            </form>
+            ?>
+        </form>
 
         <?php
-        
+
         ?>
 
 
         <?php
-        //Acceso sin login o guest
-        if (($_SESSION['user']["username"] == "") || ($_SESSION['user']["username"] == "guest")) {
+        //Vista capitales con perfil invitado
+        if (($_SESSION['user']["username"] == "guest")) {
             if (!empty($data[1])) {
                 //Muestra los registros de la bd
                 echo "<br>
@@ -77,17 +91,8 @@ var_dump($_SESSION['user']);
             } else {
                 echo "<div id='msg'>No hay ningún registro en la tabla</div>";
             }
-        } else { //Acceso admin
+        } else { //Vista capitales con perfil admin
             if (!empty($data[1])) {
-                echo "<div id=\"auth\">
-                <span id=\"img\" class=\"material-symbols-outlined\">
-                account_circle_full
-                </span>
-                <div>" . $_SESSION['user']['username'] . "</div>
-                <div>
-                <a href='" . DIRBASEURL . "/wordsearch/logout'>Cerrar sesión</a></div>
-                </div>";
-                
                 echo "<br>
                 <h3>Cuatro últimas capitales</h3>
                 <br>

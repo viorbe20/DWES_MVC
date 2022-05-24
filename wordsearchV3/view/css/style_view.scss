@@ -225,19 +225,39 @@ footer {
 }
 
 #auth {
+  color: #1f535c;
   position: fixed;
   top: 2%;
-  right: 10%;
-  *background-color: #1f535c;
+  right: 1%;
   display: flex;
-  padding-left: 2%;
+
+  #s1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 30px;
+  }
 
   #img {
     font-size: 30px;
+    margin-right: 5px;
   }
 
-  div {
-    margin-left: 10px;
-    padding-top: 4%;
+  #s2 {
+    display: flex;
+    flex-direction: row;
+
+    a {
+      text-decoration: none;
+      color: #1f535c;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        font-size: 20px;
+        padding-top: 4%;
+      }
+    }
   }
 }

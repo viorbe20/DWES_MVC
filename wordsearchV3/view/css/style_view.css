@@ -208,17 +208,34 @@ footer {
 }
 
 #auth {
+  color: #1f535c;
   position: fixed;
   top: 2%;
-  right: 10%;
-  *background-color: #1f535c;
+  right: 1%;
   display: flex;
-  padding-left: 2%;
+}
+#auth #s1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 30px;
 }
 #auth #img {
   font-size: 30px;
+  margin-right: 5px;
 }
-#auth div {
-  margin-left: 10px;
+#auth #s2 {
+  display: flex;
+  flex-direction: row;
+}
+#auth #s2 a {
+  text-decoration: none;
+  color: #1f535c;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#auth #s2 a span {
+  font-size: 20px;
   padding-top: 4%;
 }/*# sourceMappingURL=style_view.css.map */
