@@ -15,6 +15,7 @@ $msg = "";
 include("require/view_header.html");
 $css = file_get_contents("../view/css/style_view.css");
 echo "<style>$css</style>";
+include("require/view_auth.php");
 ?>
 
 <body>
