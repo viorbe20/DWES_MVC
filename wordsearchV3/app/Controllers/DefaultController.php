@@ -50,6 +50,9 @@ class DefaultController extends BaseController
         //Añade una palabra
         } else if (isset($_POST['add'])) {
             header('location:' . DIRBASEURL . '/wordsearch/add');
+        //Elimina una palabra
+        } else if (isset($_POST['delete'])) {
+            header('location:' . DIRBASEURL . '/wordsearch/delete');
         //Renderizado por defecto
         } else {
             //Renderiza página inicio con los datos  
