@@ -14,6 +14,11 @@ header h1 {
   padding-bottom: 10px;
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -210,32 +215,37 @@ footer {
 #auth {
   color: #1f535c;
   position: fixed;
-  top: 2%;
+  top: 1%;
   right: 1%;
   display: flex;
+  flex-direction: column;
 }
-#auth #s1 {
+#auth #auth1 {
+  display: flex;
+  margin-bottom: 2%;
+}
+#auth #auth1 #s1 {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-right: 30px;
 }
-#auth #img {
+#auth #auth1 #img {
   font-size: 30px;
   margin-right: 5px;
 }
-#auth #s2 {
+#auth #auth1 #s2 {
   display: flex;
   flex-direction: row;
 }
-#auth #s2 a {
+#auth #auth1 #s2 a {
   text-decoration: none;
   color: #1f535c;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-#auth #s2 a span {
+#auth #auth1 #s2 a span {
   font-size: 20px;
   padding-top: 4%;
 }/*# sourceMappingURL=style_view.css.map */

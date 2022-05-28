@@ -19,7 +19,7 @@ $router = new Router();
 $router->add(array(
     'name'=>'index',
     'path'=>'/^\/wordsearch$/',
-    'action'=>[DefaultController::class, 'indexAction'],
+    'action'=>[DefaultController::class, 'indexAction'],  
     'auth'=>["admin", "guest"]
 ));
 
