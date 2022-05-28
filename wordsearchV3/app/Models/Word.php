@@ -82,22 +82,11 @@ class Word extends DBAbstractModel
     }
 
     //Otros métodos
-    public function getByName($filtro = '')
+    public function getByName()
     {
-        if ($filtro != '') {
-            $word = "%" . $filtro . "%";
-            $this->query = "SELECT * FROM words WHERE (word LIKE :word)";
-            // Cargamos los parámetros
-            $this->parametros['word'] = $word;
-
-            // Ejecutamos consulta que devuelve registros
-            $this->get_results_from_query();
-        }
-        // if (count($this->rows) == 1) {
-        //     foreach ($this->rows[0] as $propiedad => $valor) {
-        //         $this->$propiedad = $valor;
-        //     }
-        // }
+        $this->query = "SELECT word, id FROM words WHERE word LIKE :word";
+        $this->parametros['word'] = $this->word;
+        $this->get_results_from_query();
         return $this->rows;
     }
 

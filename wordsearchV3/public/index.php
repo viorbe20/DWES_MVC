@@ -42,7 +42,7 @@ $router->add(array(
 //Enrutamiento a página para eliminar palabra
 $router->add(array(
     'name'=>'deleteWord',
-    'path'=>'/^\/wordsearch\/delete\/\d{1,3}$/',
+    'path'=>'/^\/wordsearch\/delete\/\d{1,3}\/\w{1,}$/',
     'action'=>[WordController::class, 'deleteWordAction'],
     'auth'=>["admin"]
 ));
@@ -67,7 +67,11 @@ if ($route) {
         $actionName = $route['action'][1];
         $controller = new $controllerName;
         $controller->$actionName($request);
+        echo $request;
+
     }
 }else{
     echo "No route";
+    echo $request;
+    ///%22%20.%20DIRBASEURL%20.%20%22/wordsearch/logout
 }

@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * current() inicio en el primer elemento de un array
+ */
 namespace App\Controllers;
 
 use App\Models\Word;
@@ -8,31 +10,35 @@ require_once('..\app\Config\constantes.php');
 
 class WordController extends BaseController
 {
-
+    
     //Muestra la página para añadir palabras
     public function addWordAction()
     {
+        $data = array();
         $word = Word::getInstancia();
+        
         //Para que no guarde si el input está vacío
-        if (isset($_POST["addNewWord"]) && (!empty($_POST['newWord']))) {
-
-            if (!empty($_POST["newWord"])) {
-
-                //Comprueba que no esté repetida
-                $data = $word->getByName($_POST["newWord"]);
-                if (!current($data)) {
-                    echo "no repetido";
-                    $word->setWord($_POST['newWord']);
-                    $word->setEntity();
-                    header('location: ' . DIRBASEURL . '/wordsearch');
-                } else {
-                    echo "<div id='msgExistingWord'> Esa palabra ya existe</div>";
-                    $this->renderHTML("../view/add_view.php");
-                }
+        if (isset($_POST["addNewWord"])) {
+            
+            // //Comprueba que el input no esté vacío
+            // if ((!empty($_POST['newWord']))) {
+            //     $word->setWord($_POST['newWord']);
+            //     $data = $word->getByName($_POST["newWord"]); //La buscamos en la bd
+                
+            //     //Si existe, está repetida
+            //     if (!empty($data)) {
+            //         echo "<div id='msgExistingWord'> Esa palabra ya existe</div>";
+            //         $this->renderHTML("../view/add_view.php");
+            //     } else {
+            //         //$word->setWord($_POST['newWord']);
+            //         $word->setEntity();
+            //         //header('location: ' . DIRBASEURL . '/wordsearch');
+            //         $this->renderHTML("../view/add_view.php");
+            //     }   
+            } else {
+                $this->renderHTML("../view/.php");
+            //$this->renderHTML("../view/index_view.php");
             }
-        } else {
-            $this->renderHTML("../view/index_view.php");
-        }
     }
 
     //Muestra la página para editar palabras

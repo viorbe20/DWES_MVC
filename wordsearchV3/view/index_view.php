@@ -33,7 +33,7 @@ $DateAndTime = date('d-m-Y, h:i', time());
             </section>
 
             <section id="s2">
-                <a id="icon-logout" href='" . DIRBASEURL . "/wordsearch/logout'><span class="material-symbols-outlined">logout</span><label>Salir</label></a>
+            <a id="icon-logout" href="<?php echo DIRBASEURL . '/wordsearch/logout'?>"><span class="material-symbols-outlined">logout</span><label>Salir</label></a>
             </section>
         </div>
         <div>
@@ -105,7 +105,8 @@ $DateAndTime = date('d-m-Y, h:i', time());
                 <div id='container'>";
                 foreach ($data[1] as $value) {
                     echo "<div class='capital'>";
-                    echo "<p class='name'>" . $value["word"] . " </p><a href='/repasoJunio/ra3/db/wordsearchV3/public/index.php/wordsearch/delete/" . $value["id"] . "/" . $value["word"]  . "'>Eliminar</a> <a href='/repasoJunio/ra3/db/wordsearchV3/public/index.php/wordsearch/edit/" . $value["id"] . "/" . $value["word"] . "'>Editar</a> </br>";
+                    //echo "<p class='name'>" . $value["word"] . " </p><a href='/repasoJunio/ra3/db/wordsearchV3/public/index.php/wordsearch/delete/" . $value["id"] . "/" . $value["word"]  . "'>Eliminar</a> <a href='/repasoJunio/ra3/db/wordsearchV3/public/index.php/wordsearch/edit/" . $value["id"] . "/" . $value["word"] . "'>Editar</a> </br>";
+                    echo "<p class='name'>" . $value["word"] . " </p><a href='" . DIRBASEURL . "/wordsearch/delete/" . $value["id"] . "/" . $value["word"] . "'>Eliminar</a>  <a href='" . DIRBASEURL . "/wordsearch/edit/" . $value["id"] . "/" . $value["word"] . "'>Editar</a> </br>";
                     echo "</div>";
                     echo ('<br>');
                 }
