@@ -42,7 +42,7 @@ class DefaultController extends BaseController
         $data = array();
         $word = Word::getInstancia();
         //Para que no guarde si el input está vacío
-        if (isset($_POST["addNewWord"]) || isset($_POST["home"])) {
+        if (isset($_POST["addNewWord"]) && (!empty($_POST['inputNewWord']))) {
             if (!empty($_POST["inputNewWord"])) {
                 $data["word"] = $_POST["inputNewWord"];
                 $word->set($data);
