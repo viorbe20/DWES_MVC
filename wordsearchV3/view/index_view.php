@@ -67,7 +67,13 @@ $DateAndTime = date('d-m-Y, h:i', time());
             <?php
             //Muestra botón añadir solo con admin
             if ($_SESSION['user']["profile"] == "admin") {
-                echo "<input class=\"myButton\" type=\"submit\" name=\"add\" value=\"Añadir\"><br><br>";
+                ?>
+                <a class="myButton" href="<?php echo DIRBASEURL . '/wordsearch/add'?>"><label>Añadir</label></a>
+                <?php
+                
+                //echo "<input class=\"myButton\" type=\"submit\" name=\"add\" value=\"Añadir\"><br><br>";
+            //"<a id="icon-logout" href="<?php echo DIRBASEURL . '/wordsearch/logout'/><label>Salir</label></a>
+
             }
 
             ?>

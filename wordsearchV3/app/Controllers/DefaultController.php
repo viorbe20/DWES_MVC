@@ -42,21 +42,18 @@ class DefaultController extends BaseController
                 }
             }
 
-            //Busca una palabra
+        //Busca una palabra
         } else if (isset($_POST["search"]) && (!empty($_POST["inputWord"]))) {
             array_push($data, $user_data, $word->getByName($_POST["inputWord"]));
             $this->renderHTML('../view/index_view.php', $data);
-            
+
             //Añade una palabra
         } else if (isset($_POST['add'])) {
             //header('location:' . DIRBASEURL . '/wordsearch/add');
-            array_push($data, $user_data, $word->getAll());
-            $this->renderHTML('../view/add_view.php', $data);
-            
-            //Elimina una palabra
-        } else if (isset($_POST['delete'])) {
-            header('location:' . DIRBASEURL . '/wordsearch/delete');
-            
+            //array_push($data, $user_data, $word->getAll());
+            //$this->renderHTML('../view/add_view.php');
+            header('location:' . DIRBASEURL . '/wordsearch/add');
+
             //Renderizado por defecto
         } else {
             //Renderiza página inicio con los datos  
