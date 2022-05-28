@@ -11,15 +11,27 @@
 </head>
     <!--Muestra la información del perfil que está conectado-->
     <div id="auth">
-        <section id="s1">
-            <span id="img" class="material-symbols-outlined">
-                account_circle_full
-            </span>
-            <div><?php echo strtoupper($_SESSION['user']['profile'])?></div>
-        </section>
-        
-        <section id="s2">
-            <a id="icon-logout" href='" . DIRBASEURL . "/wordsearch/logout'><span class="material-symbols-outlined">logout</span><label>Salir</label></a>
-        </section>
+        <div id="auth1">
+            <section id="s1">
+                <span id="img" class="material-symbols-outlined">
+                    account_circle_full
+                </span>
+                <div><?php echo strtoupper($_SESSION['user']['profile']) ?></div>
+            </section>
+
+            <?php
+            if ($_SESSION['user']['profile'] != "guest") {
+            ?>
+                <section id="s2">
+                    <a id="icon-logout" href="<?php echo DIRBASEURL . '/wordsearch/logout' ?>"><span class="material-symbols-outlined">logout</span><label>Salir</label></a>
+                </section>
+            <?php
+
+            }
+            ?>
+        </div>
+        <div>
+            <p>Hoy es <?php echo date('d-m-Y, h:i', time()) ?></p>
+        </div>
     </div>
 </html>

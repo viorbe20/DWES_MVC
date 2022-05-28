@@ -15,7 +15,7 @@ header {
   }
 }
 
-section{
+section {
   display: flex;
   flex-direction: column;
 }
@@ -168,6 +168,7 @@ footer {
 }
 
 .myButton {
+  cursor: pointer;
   background-color: #1f535c;
   color: white;
   width: 100px;
@@ -233,11 +234,11 @@ footer {
   color: #1f535c;
   position: fixed;
   top: 1%;
-  right: 1%;
+  right: 2%;
   display: flex;
   flex-direction: column;
 
-  #auth1{
+  #auth1 {
     display: flex;
     margin-bottom: 2%;
 
@@ -247,23 +248,23 @@ footer {
       align-items: center;
       margin-right: 30px;
     }
-  
+
     #img {
       font-size: 30px;
       margin-right: 5px;
     }
-  
+
     #s2 {
       display: flex;
       flex-direction: row;
-  
+
       a {
         text-decoration: none;
         color: #1f535c;
         display: flex;
         flex-direction: row;
         align-items: center;
-  
+
         span {
           font-size: 20px;
           padding-top: 4%;
@@ -271,6 +272,16 @@ footer {
       }
     }
   }
+}
 
+#addLink {
+  text-decoration: none;
+  padding-left: 2%;
+  padding-right: 2%;
+}
 
+#icon-logout {
+  label {
+    cursor: pointer;
+  }
 }

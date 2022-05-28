@@ -18,29 +18,10 @@ include("require/view_header.html");
 $css = file_get_contents("../view/css/style_view.css");
 echo "<style>$css</style>";
 //var_dump($_SESSION['user']['profile']);
-$DateAndTime = date('d-m-Y, h:i', time());
+include("require/view_auth.php");
 ?>
 
 <body>
-    <!--Muestra la información del perfil que está conectado-->
-    <div id="auth">
-        <div id="auth1">
-            <section id="s1">
-                <span id="img" class="material-symbols-outlined">
-                    account_circle_full
-                </span>
-                <div><?php echo strtoupper($_SESSION['user']['profile']) ?></div>
-            </section>
-
-            <section id="s2">
-            <a id="icon-logout" href="<?php echo DIRBASEURL . '/wordsearch/logout'?>"><span class="material-symbols-outlined">logout</span><label>Salir</label></a>
-            </section>
-        </div>
-        <div>
-            <p>Hoy es <?php echo $DateAndTime?></p>
-        </div>
-    </div>
-
     <?php
     //Fomulario login se muestra mientras se está de invitado
     if ($_SESSION['user']['profile'] == "guest") {
@@ -67,13 +48,9 @@ $DateAndTime = date('d-m-Y, h:i', time());
             <?php
             //Muestra botón añadir solo con admin
             if ($_SESSION['user']["profile"] == "admin") {
-                ?>
-                <a class="myButton" href="<?php echo DIRBASEURL . '/wordsearch/add'?>"><label>Añadir</label></a>
-                <?php
-                
-                //echo "<input class=\"myButton\" type=\"submit\" name=\"add\" value=\"Añadir\"><br><br>";
-            //"<a id="icon-logout" href="<?php echo DIRBASEURL . '/wordsearch/logout'/><label>Salir</label></a>
-
+            ?>
+                <a id="addLink" class="myButton" href="<?php echo DIRBASEURL . '/wordsearch/add' ?>"><label>Añadir</label></a>
+            <?php
             }
 
             ?>
