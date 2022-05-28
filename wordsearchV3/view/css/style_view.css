@@ -259,4 +259,28 @@ footer {
 
 #icon-logout label {
   cursor: pointer;
+}
+
+#s3 {
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  display: flex;
+  flex-direction: row;
+  *padding-top: 5px;
+  margin-left: 1%;
+}
+#s3 a {
+  text-decoration: none;
+  color: #1f535c;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#s3 a span {
+  cursor: pointer;
+  font-size: 20px;
+}
+#s3 a label {
+  cursor: pointer;
 }/*# sourceMappingURL=style_view.css.map */

@@ -285,3 +285,30 @@ footer {
     cursor: pointer;
   }
 }
+
+#s3 {
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  display: flex;
+  flex-direction: row;
+  *padding-top: 5px;
+  margin-left: 1%;
+  
+  a {
+    text-decoration: none;
+    color: #1f535c;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    span {
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    label{
+    cursor: pointer;
+    }
+  }
+}

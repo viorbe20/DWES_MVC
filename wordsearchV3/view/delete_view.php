@@ -10,7 +10,8 @@
     <title>Ejercicio Sopa de Letras</title>
 </head>
 <?php
-include("require/view_header.html");
+include("require/view_go_home.php");
+include("require/view_header.php");
 $css = file_get_contents("../view/css/style_view.css");
 echo "<style>$css</style>";
 include("require/view_auth.php");
